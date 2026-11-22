@@ -20,12 +20,15 @@ xcodebuild \
   -project "$PROJECT" \
   -scheme "$SCHEME" \
   -configuration "$CONFIG" \
+  -sdk iphoneos \
   -destination "generic/platform=iOS" \
   -derivedDataPath "$DERIVED" \
   -archivePath "$ARCHIVE" \
   CODE_SIGNING_ALLOWED=NO \
   CODE_SIGNING_REQUIRED=NO \
   CODE_SIGN_IDENTITY="" \
+  CODE_SIGN_STYLE=Manual \
+  AD_HOC_CODE_SIGNING_ALLOWED=YES \
   archive
 
 echo "[*] Exporting IPA"
