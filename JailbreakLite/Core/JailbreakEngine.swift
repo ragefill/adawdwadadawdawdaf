@@ -172,7 +172,7 @@ final class JailbreakEngine: ObservableObject {
 
         let result = bridge.runExploit()
         progress = 0.6
-        if result.success {
+        if result.success.boolValue {
             hasKernelRW = bridge.hasKernelReadWrite()
             progress = 1.0
             state = hasKernelRW ? .postExploitation : .partial
@@ -183,7 +183,8 @@ final class JailbreakEngine: ObservableObject {
         } else {
             progress = 1.0
             state = .failed
-            log("ERROR", "Exploit failed: \(result.message ?? "unknown error")")
+            let msg = result.message.map { String(cString: $0) } ?? "unknown error"
+            log("ERROR", "Exploit failed: \(msg)")
         }
     }
 

@@ -19,7 +19,7 @@ struct ConsoleView: View {
                     .padding()
                 }
                 .background(Color.black)
-                .onChange(of: engine.logs.count) { _, _ in
+                .onChange(of: engine.logs.count) { _ in
                     if let last = engine.logs.last {
                         withAnimation { proxy.scrollTo(last.id, anchor: .bottom) }
                     }
